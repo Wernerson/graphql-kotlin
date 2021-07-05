@@ -19,7 +19,6 @@ package com.expediagroup.graphql.client.gson
 import com.expediagroup.graphql.client.gson.data.*
 import com.expediagroup.graphql.client.gson.data.enums.TestEnum
 import com.expediagroup.graphql.client.gson.data.polymorphicquery.SecondInterfaceImplementation
-import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import org.junit.jupiter.api.Test
 import java.util.*
@@ -27,8 +26,7 @@ import kotlin.test.assertEquals
 
 class GraphQLClientGsonSerializerTest {
 
-    private val gson = GsonBuilder().serializeNulls().create()
-    private val serializer = GraphQLClientGsonSerializer(gson)
+    private val serializer = GraphQLClientGsonSerializer()
 
     @Test
     fun `verify we can serialize GraphQLClientRequest`() {

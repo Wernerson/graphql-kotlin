@@ -21,7 +21,7 @@ import com.expediagroup.graphql.client.types.GraphQLClientError
 import com.expediagroup.graphql.client.types.GraphQLClientRequest
 import com.expediagroup.graphql.client.types.GraphQLClientResponse
 import com.expediagroup.graphql.client.types.GraphQLClientSourceLocation
-import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser.parseString
 import com.google.gson.reflect.TypeToken
@@ -51,7 +51,7 @@ data class GsonGraphQLResponse<T>(
  * Gson based GraphQL request/response serializer.
  */
 class GraphQLClientGsonSerializer(
-    private val gson: Gson = Gson()
+    gsonBuilder: GsonBuilder = GsonBuilder().serializeNulls()
 ) : GraphQLClientSerializer {
 
     private val typeCache = ConcurrentHashMap<KClass<*>, Type>()
@@ -60,6 +60,8 @@ class GraphQLClientGsonSerializer(
         typeCache.computeIfAbsent(type) {
             TypeToken.getParameterized(GsonGraphQLResponse::class.java, type.java).type
         }
+
+    private val gson = gsonBuilder.create()
 
     override fun serialize(request: GraphQLClientRequest<*>): String = gson.toJson(request)
 
