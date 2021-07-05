@@ -29,6 +29,7 @@ rootProject.name = "graphql-kotlin"
 include(":graphql-kotlin-client")
 include(":graphql-kotlin-client-serialization")
 include(":graphql-kotlin-client-jackson")
+include(":graphql-kotlin-client-gson")
 include(":graphql-kotlin-ktor-client")
 include(":graphql-kotlin-spring-client")
 
@@ -56,6 +57,7 @@ include(":graphql-kotlin-spring-server")
 project(":graphql-kotlin-client").projectDir = file("clients/graphql-kotlin-client")
 project(":graphql-kotlin-client-serialization").projectDir = file("clients/graphql-kotlin-client-serialization")
 project(":graphql-kotlin-client-jackson").projectDir = file("clients/graphql-kotlin-client-jackson")
+project(":graphql-kotlin-client-gson").projectDir = file("clients/graphql-kotlin-client-gson")
 project(":graphql-kotlin-ktor-client").projectDir = file("clients/graphql-kotlin-ktor-client")
 project(":graphql-kotlin-spring-client").projectDir = file("clients/graphql-kotlin-spring-client")
 
